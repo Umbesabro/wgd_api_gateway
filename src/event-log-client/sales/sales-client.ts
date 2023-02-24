@@ -8,9 +8,17 @@ import { QUEUES } from '../cfg/queues';
 @Injectable()
 export class SalesClient {
   async createSalesOrder(salesOrder: SalesOrderDto): Promise<EventDto> {
-    const r = await axios.post(`${Config.url}/api/event/create`, {
+    const r = await axios.post(Config.createEventUrl, {
       payload: salesOrder,
       name: QUEUES.NEW_SALES_ORDER,
+    });
+    return r.data;
+  }
+
+  async dispatchSalesOrder(salesOrderId: string): Promise<EventDto> {
+    const r = await axios.post(Config.createEventUrl, {
+      payload: { salesOrderId },
+      name: QUEUES.DISPATCH_ORDER,
     });
     return r.data;
   }

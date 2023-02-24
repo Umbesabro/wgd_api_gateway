@@ -10,4 +10,8 @@ export class SalesOrderService {
   public createOrder(salesOrderDto: SalesOrderDto): Promise<EventDto> {
     return this.salesClient.createSalesOrder(salesOrderDto);
   }
+
+  public dispatchSalesOrder(salesOrderId: string): Promise<EventDto> {
+    return this.salesClient.dispatchSalesOrder(salesOrderId);
+  }
 }
