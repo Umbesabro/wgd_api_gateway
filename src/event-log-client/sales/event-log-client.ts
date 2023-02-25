@@ -6,7 +6,7 @@ import { Config } from '../cfg/config';
 import { QUEUES } from '../cfg/queues';
 
 @Injectable()
-export class SalesClient {
+export class EventLogClient {
   async createSalesOrder(salesOrder: SalesOrderDto): Promise<EventDto> {
     const r = await axios.post(Config.createEventUrl, {
       payload: salesOrder,
@@ -18,7 +18,7 @@ export class SalesClient {
   async dispatchSalesOrder(id: string): Promise<EventDto> {
     const r = await axios.post(Config.createEventUrl, {
       payload: { id },
-      name: QUEUES.DISPATCH_ORDER,
+      name: QUEUES.REQUEST_DISPATCH_ORDER,
     });
     return r.data;
   }
