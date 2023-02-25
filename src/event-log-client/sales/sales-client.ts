@@ -15,9 +15,9 @@ export class SalesClient {
     return r.data;
   }
 
-  async dispatchSalesOrder(salesOrderId: string): Promise<EventDto> {
+  async dispatchSalesOrder(id: string): Promise<EventDto> {
     const r = await axios.post(Config.createEventUrl, {
-      payload: { salesOrderId },
+      payload: { id },
       name: QUEUES.DISPATCH_ORDER,
     });
     return r.data;
