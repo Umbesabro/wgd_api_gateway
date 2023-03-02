@@ -5,5 +5,9 @@ curl -XPATCH http://localhost:3000/api/order/sales/dispatch?salesOrderId=0
 Create order:
 curl -XPOST localhost:3000/api/order/sales/create -d '{"orderDate":"2023-01-31","deliveryDate":"2023-02-02","positions":[{"productId":"0","quantity":2}]}' -H 'Content-Type: application/json'
 
+curl -XPOST localhost:3000/api/order/sales/create -d '{"orderDate":"2023-01-31","deliveryDate":"2023-02-02","positions":[{"productId":"0","quantity":2},{"productId":"1","quantity":3}]}' -H 'Content-Type: application/json'
+
+
 Add product:
 curl -XPOST localhost:3000/api/product/add -d '{"id":0,"name":"MacBook","qty":10}' -H 'Content-Type: application/json'
+curl -XPOST localhost:3000/api/product/add -d '{"id":1,"name":"iPhone","qty":10}' -H 'Content-Type: application/json'
